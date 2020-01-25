@@ -1,0 +1,4 @@
+<h1>{{listDetail.title}}</h1>
+<div *ngFor="let task of listDetail.tasks">
+  <app-card [taskDetail]="task"></app-card>
+</div>

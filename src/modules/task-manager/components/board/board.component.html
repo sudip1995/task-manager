@@ -1,0 +1,4 @@
+<h1>{{boardDetail.title}}</h1>
+<div *ngFor="let list of boardDetail.lists">
+  <app-list [listDetail]="list"></app-list>
+</div>
