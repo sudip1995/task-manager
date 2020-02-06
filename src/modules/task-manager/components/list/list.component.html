@@ -1,4 +1,10 @@
-<h1>{{listDetail.title}}</h1>
-<div *ngFor="let task of listDetail.tasks">
-  <app-card [taskDetail]="task"></app-card>
+<div class="list-container">
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="list-header">
+    <span>{{listDetail.title}}</span>
+  </div>
+  <div class="list" [cdkDropListData]="listDetail.tasks" cdkDropList (cdkDropListDropped)="drop($event)">
+    <div *ngFor="let task of listDetail.tasks" cdkDrag>
+      <app-card [taskDetail]="task"></app-card>
+    </div>
+  </div>
 </div>

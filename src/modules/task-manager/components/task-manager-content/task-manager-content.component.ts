@@ -16,7 +16,8 @@ export class TaskManagerContentComponent implements OnInit {
       lists: [{
         title: 'List 1',
         tasks: [{
-          title: 'Task 1'
+          title: 'Task 1',
+          description: 'GGGGGG'
         },
           {
             title: 'Task 2'
@@ -31,6 +32,9 @@ export class TaskManagerContentComponent implements OnInit {
             title: 'Task 2'
           }
         ]
+      }, {
+        title: 'List 3',
+        tasks: []
       }],
     }, {
       title: 'Board 2',

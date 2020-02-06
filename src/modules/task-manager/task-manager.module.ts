@@ -4,6 +4,9 @@ import { TaskManagerContentComponent } from './components/task-manager-content/t
 import { BoardComponent } from './components/board/board.component';
 import { CardComponent } from './components/card/card.component';
 import { ListComponent } from './components/list/list.component';
+import {MatCardModule} from '@angular/material';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 
@@ -13,7 +16,10 @@ import { ListComponent } from './components/list/list.component';
     TaskManagerContentComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatCardModule,
+    FlexLayoutModule,
+    DragDropModule
   ]
 })
 export class TaskManagerModule { }

@@ -1,1 +1,6 @@
-<h3>{{taskDetail.title}}</h3>
+<div class="card-container">
+  <mat-card [ngClass]="'card'">
+    <mat-card-title>{{taskDetail.title}}</mat-card-title>
+    <mat-card-content>{{taskDetail?.description}}</mat-card-content>
+  </mat-card>
+</div>
