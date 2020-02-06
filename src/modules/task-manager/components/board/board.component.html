@@ -1,5 +1,11 @@
-<div class="board" fxLayout="row" cdkDropListGroup>
-  <div *ngFor="let list of boardDetail.lists">
-    <app-list [listDetail]="list"></app-list>
-  </div>
+<div class="board" fxLayout="row"
+     cdkDropList
+     cdkDropListOrientation="horizontal"
+     [cdkDropListData]="boardDetail.lists"
+     (cdkDropListDropped)="drop($event)">
+  <app-list class="list" *ngFor="let list of boardDetail.lists" [listDetail]="list" [listIds]="listIds"
+       cdkDropListGroup
+       cdkDrag [cdkDragData]="list">
+
+  </app-list>
 </div>

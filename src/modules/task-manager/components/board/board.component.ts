@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-board',
@@ -8,11 +9,15 @@ import {Component, Input, OnInit} from '@angular/core';
 export class BoardComponent implements OnInit {
 
   @Input() boardDetail: any;
-
+  listIds: string[];
   constructor() { }
 
   ngOnInit() {
-    console.log(this.boardDetail);
+    this.listIds = this.boardDetail.lists.map(l => `${l.id}`);
   }
 
+  drop(event: CdkDragDrop<any[]>) {
+    moveItemInArray(this.boardDetail.lists, event.previousIndex, event.currentIndex);
+    this.listIds = this.boardDetail.lists.map(l => `${l.id}`);
+  }
 }

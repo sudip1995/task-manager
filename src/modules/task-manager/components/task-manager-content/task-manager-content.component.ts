@@ -14,6 +14,7 @@ export class TaskManagerContentComponent implements OnInit {
     this.boards = [{
       title: 'Board 1',
       lists: [{
+        id: 1,
         title: 'List 1',
         tasks: [{
           title: 'Task 1',
@@ -24,6 +25,7 @@ export class TaskManagerContentComponent implements OnInit {
           }
         ]
       }, {
+        id: 2,
         title: 'List 2',
         tasks: [{
           title: 'Task 1'
@@ -33,6 +35,7 @@ export class TaskManagerContentComponent implements OnInit {
           }
         ]
       }, {
+        id: 3,
         title: 'List 3',
         tasks: []
       }],

@@ -9,10 +9,12 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 export class ListComponent implements OnInit {
 
   @Input() listDetail: any;
+  @Input() listIds: string[];
 
   constructor() { }
 
   ngOnInit() {
+    console.log(this.listDetail);
   }
 
   drop(event: CdkDragDrop<any[]>) {
@@ -24,5 +26,9 @@ export class ListComponent implements OnInit {
         event.previousIndex,
         event.currentIndex);
     }
+  }
+
+  getConnectedList(): any[] {
+    return this.listIds;
   }
 }
