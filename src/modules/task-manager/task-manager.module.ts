@@ -7,6 +7,7 @@ import { ListComponent } from './components/list/list.component';
 import {MatCardModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 
 
@@ -19,7 +20,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     CommonModule,
     MatCardModule,
     FlexLayoutModule,
-    DragDropModule
+    DragDropModule,
+    ScrollingModule
   ]
 })
 export class TaskManagerModule { }

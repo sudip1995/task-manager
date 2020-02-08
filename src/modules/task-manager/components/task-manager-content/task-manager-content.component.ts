@@ -18,8 +18,26 @@ export class TaskManagerContentComponent implements OnInit {
         title: 'List 1',
         tasks: [{
           title: 'Task 1',
-          description: 'GGGGGG'
+          description: 'GGG'
         },
+          {
+            title: 'Task 2'
+          },
+          {
+            title: 'Task 2'
+          },
+          {
+            title: 'Task 2'
+          },
+          {
+            title: 'Task 2'
+          },
+          {
+            title: 'Task 2'
+          },
+          {
+            title: 'Task 2'
+          },
           {
             title: 'Task 2'
           }
@@ -36,6 +54,18 @@ export class TaskManagerContentComponent implements OnInit {
         ]
       }, {
         id: 3,
+        title: 'List 3',
+        tasks: []
+      }, {
+        id: 4,
+        title: 'List 3',
+        tasks: []
+      }, {
+        id: 5,
+        title: 'List 3',
+        tasks: []
+      }, {
+        id: 6,
         title: 'List 3',
         tasks: []
       }],

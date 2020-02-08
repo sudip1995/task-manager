@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import {TaskManagerModule} from '../modules/task-manager/task-manager.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {RouterModule} from '@angular/router';
+import {appRoutes} from './app.routes';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     BrowserModule,
     TaskManagerModule,
     BrowserAnimationsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [],
   bootstrap: [AppComponent]

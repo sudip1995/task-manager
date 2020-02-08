@@ -1,9 +1,9 @@
-<div class="board" fxLayout="row"
+<div class="board" fxLayout="row" cdk-scrollable
      cdkDropList
      cdkDropListOrientation="horizontal"
      [cdkDropListData]="boardDetail.lists"
      (cdkDropListDropped)="drop($event)">
-  <app-list class="list" *ngFor="let list of boardDetail.lists" [listDetail]="list" [listIds]="listIds"
+  <app-list class="column" *ngFor="let list of boardDetail.lists" [listDetail]="list" [listIds]="listIds"
        cdkDropListGroup
        cdkDrag [cdkDragData]="list">
 

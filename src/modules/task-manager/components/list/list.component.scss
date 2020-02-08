@@ -1,13 +1,15 @@
 .list-container {
   background-color: #ebecf0;
-  margin-left: 10px;
   min-width: 485px;
   max-width: 485px;
   height: 100%;
+  overflow: auto;
 }
 
 .list {
+  margin: 5px;
   height: 100%;
+
 }
 
 .cdk-drag-placeholder {
