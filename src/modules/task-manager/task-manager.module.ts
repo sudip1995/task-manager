@@ -4,10 +4,11 @@ import { TaskManagerContentComponent } from './components/task-manager-content/t
 import { BoardComponent } from './components/board/board.component';
 import { CardComponent } from './components/card/card.component';
 import { ListComponent } from './components/list/list.component';
-import {MatCardModule} from '@angular/material';
+import {MatCardModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -21,7 +22,10 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     MatCardModule,
     FlexLayoutModule,
     DragDropModule,
-    ScrollingModule
+    ScrollingModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule
   ]
 })
 export class TaskManagerModule { }

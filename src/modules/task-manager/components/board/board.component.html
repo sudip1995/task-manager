@@ -6,6 +6,9 @@
   <app-list class="column" *ngFor="let list of boardDetail.lists" [listDetail]="list" [listIds]="listIds"
        cdkDropListGroup
        cdkDrag [cdkDragData]="list">
-
   </app-list>
+  <mat-form-field class="list-input" appearance="outline">
+    <i class="fa fa-plus"></i>
+    <input class="list-name" type="text" matInput [formControl]="listName" placeholder="Add another list"/>
+  </mat-form-field>
 </div>
