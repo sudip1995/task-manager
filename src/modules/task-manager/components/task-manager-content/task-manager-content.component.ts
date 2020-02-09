@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Apollo} from 'apollo-angular';
+import gql from 'graphql-tag';
 @Component({
   selector: 'app-task-manager-content',
   templateUrl: './task-manager-content.component.html',
@@ -8,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 export class TaskManagerContentComponent implements OnInit {
   boards: any;
 
-  constructor() { }
+  constructor(private apollo: Apollo) { }
 
   ngOnInit() {
+    this.boards = this.apollo.watchQuery<any>({
+      query: gql`
+        query {
+          boards {
+            id
+            title
+          }
+        }
+      `
+    }).valueChanges.subscribe(res => {
+        console.log(res.data.boards);
+        return res.data.boards;
+      }
+    );
     this.boards = [{
       title: 'Board 1',
       lists: [{
