@@ -1,3 +1,40 @@
 .task-manager-container {
-  height: 100%;
+
+}
+
+.board-tile {
+  background-color: #798d99;
+  color: #ffffff;
+  margin: 10px;
+  padding: 20px;
+  min-width: 200px;
+  max-width: 200px;
+  min-height: 120px;
+  max-height: 120px;
+  cursor: pointer;
+}
+
+.board-tile:hover {
+  opacity: 0.8;
+}
+
+.add-board-tile {
+  background: 0 0;
+  color: #337aee;
+  margin: 10px;
+  padding: 20px;
+  min-width: 200px;
+  max-width: 200px;
+  min-height: 120px;
+  max-height: 120px;
+  cursor: pointer;
+}
+
+.add-board-tile:hover {
+  opacity: 0.8;
+}
+
+.board-title {
+  font-size: 20px;
+  margin-left: 5px;
 }

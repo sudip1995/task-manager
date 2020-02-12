@@ -1,5 +1,15 @@
-<div class="task-manager-container" fxFlex="1 1 auto">
-  <app-board [boardDetail]="boards[0]"></app-board>
+<!--<div class="task-manager-container" fxFlex="1 1 auto">-->
+<!--  <app-board [boardDetail]="boards[0]"></app-board>-->
+<!--</div>-->
+
+<div class="task-manager-container" fxLayout="row">
+  <mat-card fxLayout="row" *ngFor="let board of boards" [ngClass]="'board-tile'" (click)="navigateToBoard(board.id)">
+    <mat-card-title class="board-title">{{board.title}}</mat-card-title>
+  </mat-card>
+  <mat-card fxLayout="row" [ngClass]="'add-board-tile'" (click)="addBoard()">
+    <i class="fa fa-plus"></i>
+    <mat-card-title class="board-title">Add Board</mat-card-title>
+  </mat-card>
 </div>
 
 

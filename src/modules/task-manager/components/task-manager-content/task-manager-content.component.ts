@@ -12,7 +12,7 @@ export class TaskManagerContentComponent implements OnInit {
   constructor(private apollo: Apollo) { }
 
   ngOnInit() {
-    this.boards = this.apollo.watchQuery<any>({
+    this.apollo.watchQuery<any>({
       query: gql`
         query {
           boards {
@@ -22,11 +22,10 @@ export class TaskManagerContentComponent implements OnInit {
         }
       `
     }).valueChanges.subscribe(res => {
-        console.log(res.data.boards);
-        return res.data.boards;
+        this.boards = res.data.boards;
       }
     );
-    this.boards = [{
+    /*this.boards = [{
       title: 'Board 1',
       lists: [{
         id: 1,
@@ -96,7 +95,14 @@ export class TaskManagerContentComponent implements OnInit {
           }
         ]
       }],
-    }];
+    }];*/
   }
 
+  navigateToBoard(id: any) {
+
+  }
+
+  addBoard() {
+
+  }
 }
