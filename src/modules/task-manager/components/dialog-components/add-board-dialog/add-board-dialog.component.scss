@@ -1,0 +1,29 @@
+.modal-header {
+  font-size: 10px;
+  padding-bottom: 5px;
+}
+
+.mat-dialog-actions {
+  margin: 0;
+}
+
+.material-icons {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.mat-stroked-button {
+  min-width: 85px;
+}
+
+.mat-stroked-button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  color: white;
+}
+
+.ok-button {
+  background: #337aee;
+  color: white;
+}

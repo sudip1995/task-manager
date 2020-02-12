@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Apollo} from 'apollo-angular';
 import gql from 'graphql-tag';
+import {MatDialog} from '@angular/material';
+import {AddBoardDialogComponent} from '../dialog-components/add-board-dialog/add-board-dialog.component';
 @Component({
   selector: 'app-task-manager-content',
   templateUrl: './task-manager-content.component.html',
@@ -9,7 +11,8 @@ import gql from 'graphql-tag';
 export class TaskManagerContentComponent implements OnInit {
   boards: any;
 
-  constructor(private apollo: Apollo) { }
+  constructor(private apollo: Apollo,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
     this.apollo.watchQuery<any>({
@@ -103,6 +106,39 @@ export class TaskManagerContentComponent implements OnInit {
   }
 
   addBoard() {
+    const dialogRef = this.dialog.open(AddBoardDialogComponent, {
+      minWidth: '350px',
+      maxWidth: '1000px'
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result && result.event === 'ok') {
+        this.apollo.mutate({
+          mutation: gql`
+          mutation ($board: BoardInputGraphType!) {
+            addBoard(board: $board){
+              id
+              title
+            }
+          }
+        `,
+          variables: {
+            board: {
+              title: result.data.value
+            }
+          },
+          optimisticResponse: {
+            __typename: 'Mutation',
+            addBoard: {
+              __typename: 'Board',
+              id: '1',
+              title: result.data.value
+            }
+          }
+        }).subscribe(res => {
+          this.boards.push(res.data.addBoard);
+        });
+      }
+    });
   }
 }

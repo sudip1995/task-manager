@@ -1,0 +1,33 @@
+<div fxLayout="row" fxLayoutAlign="space-between center" class="modal-header">
+  <h1>Add Board</h1>
+
+  <mat-dialog-actions>
+    <button class="material-icons" mat-dialog-close>close</button>
+  </mat-dialog-actions>
+
+</div>
+<div fxLayout="row" class="p-tb-20">
+  <form (keydown.enter)="$event.preventDefault()" [formGroup]="inputForm" fxLayout="column" fxFlex="1 0 0">
+    <div fxLayout="row" fxLayoutAlign="start start" fxFlex="0 0 auto">
+      <mat-form-field appearance="outline" fxFlex="1 0 100">
+        <mat-label>Board Name</mat-label>
+        <input matInput formControlName="value" required
+               particleAnalytics
+               analyticsCategory= "add-board"
+               analyticsAction= "board-name">
+        <mat-error *ngIf="inputFormError.value.required">
+          Please type a board name.
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+  </form>
+</div>
+
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center" class="modal-footer">
+  <button mat-stroked-button mat-dialog-close>Cancel</button>
+  <button [disabled]="inputForm.invalid" mat-stroked-button class="ok-button" (click)="okClicked()">
+    Done
+  </button>
+</mat-dialog-actions>
+

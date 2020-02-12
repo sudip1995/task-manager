@@ -2,7 +2,7 @@
 <!--  <app-board [boardDetail]="boards[0]"></app-board>-->
 <!--</div>-->
 
-<div class="task-manager-container" fxLayout="row">
+<div class="task-manager-container" fxLayout="row wrap">
   <mat-card fxLayout="row" *ngFor="let board of boards" [ngClass]="'board-tile'" (click)="navigateToBoard(board.id)">
     <mat-card-title class="board-title">{{board.title}}</mat-card-title>
   </mat-card>
