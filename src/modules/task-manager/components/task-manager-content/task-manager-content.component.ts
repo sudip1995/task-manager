@@ -3,6 +3,7 @@ import {Apollo} from 'apollo-angular';
 import gql from 'graphql-tag';
 import {MatDialog} from '@angular/material';
 import {AddBoardDialogComponent} from '../dialog-components/add-board-dialog/add-board-dialog.component';
+import {ActivatedRoute, Router} from '@angular/router';
 @Component({
   selector: 'app-task-manager-content',
   templateUrl: './task-manager-content.component.html',
@@ -12,7 +13,9 @@ export class TaskManagerContentComponent implements OnInit {
   boards: any;
 
   constructor(private apollo: Apollo,
-              public dialog: MatDialog) { }
+              private dialog: MatDialog,
+              private route: Router,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.apollo.watchQuery<any>({
@@ -28,81 +31,10 @@ export class TaskManagerContentComponent implements OnInit {
         this.boards = res.data.boards;
       }
     );
-    /*this.boards = [{
-      title: 'Board 1',
-      lists: [{
-        id: 1,
-        title: 'List 1',
-        tasks: [{
-          title: 'Task 1',
-          description: 'GGG'
-        },
-          {
-            title: 'Task 2'
-          },
-          {
-            title: 'Task 2'
-          },
-          {
-            title: 'Task 2'
-          },
-          {
-            title: 'Task 2'
-          },
-          {
-            title: 'Task 2'
-          },
-          {
-            title: 'Task 2'
-          },
-          {
-            title: 'Task 2'
-          }
-        ]
-      }, {
-        id: 2,
-        title: 'List 2',
-        tasks: [{
-          title: 'Task 1'
-        },
-          {
-            title: 'Task 2'
-          }
-        ]
-      }, {
-        id: 3,
-        title: 'List 3',
-        tasks: []
-      }, {
-        id: 4,
-        title: 'List 3',
-        tasks: []
-      }, {
-        id: 5,
-        title: 'List 3',
-        tasks: []
-      }, {
-        id: 6,
-        title: 'List 3',
-        tasks: []
-      }],
-    }, {
-      title: 'Board 2',
-      lists: [{
-        title: 'List 1',
-        tasks: [{
-          title: 'Task 1'
-        },
-          {
-            title: 'Task 2'
-          }
-        ]
-      }],
-    }];*/
   }
 
   navigateToBoard(id: any) {
-
+    this.route.navigate(['.', id], {relativeTo: this.activatedRoute});
   }
 
   addBoard() {
@@ -136,7 +68,7 @@ export class TaskManagerContentComponent implements OnInit {
             }
           }
         }).subscribe(res => {
-          this.boards.push(res.data.addBoard);
+          this.route.navigate(['.', res.data.addBoard.id], {relativeTo: this.activatedRoute});
         });
       }
     });
