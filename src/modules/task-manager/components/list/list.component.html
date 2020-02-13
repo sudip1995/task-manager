@@ -5,10 +5,10 @@
   <div class="list" fxLayout="column"
        cdkDropList
        id="{{listDetail.id}}"
-       [cdkDropListData]="listDetail.tasks"
+       [cdkDropListData]="listDetail.tickets"
        (cdkDropListDropped)="drop($event)"
        [cdkDropListConnectedTo]="getConnectedList()">
-  <app-card class="task" *ngFor="let task of listDetail.tasks"
+  <app-card class="task" *ngFor="let task of listDetail.tickets"
        cdkDrag [cdkDragData]="task"
   [taskDetail]="task">
   </app-card>

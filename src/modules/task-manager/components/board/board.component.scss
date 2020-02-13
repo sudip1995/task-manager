@@ -9,16 +9,16 @@
 .list-input {
   min-width: 350px;
   max-width: 350px;
-  margin: 5px 14px 7px;
+  padding: 6px 20px 7px 10px;
 }
 
 .fa-plus {
-  padding-right: 10px;
   color: gray;
 }
 
 .list-name {
   width: auto;
+  padding-left: 10px;
 }
 
 .cdk-drag-placeholder {

@@ -14,7 +14,6 @@ export class ListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.listDetail);
   }
 
   drop(event: CdkDragDrop<any[]>) {
