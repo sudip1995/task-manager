@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Apollo} from 'apollo-angular';
-import gql from 'graphql-tag';
 import {MatDialog} from '@angular/material';
 import {AddBoardDialogComponent} from '../dialog-components/add-board-dialog/add-board-dialog.component';
 import {ActivatedRoute, Router} from '@angular/router';
+import {board} from '../../graphql/task-manager.query';
+import {addBoard} from '../../graphql/task-manager.mutation';
+
 @Component({
   selector: 'app-task-manager-content',
   templateUrl: './task-manager-content.component.html',
@@ -19,14 +21,7 @@ export class TaskManagerContentComponent implements OnInit {
 
   ngOnInit() {
     this.apollo.watchQuery<any>({
-      query: gql`
-        query {
-          boards {
-            id
-            title
-          }
-        }
-      `
+      query: board
     }).valueChanges.subscribe(res => {
         this.boards = res.data.boards;
       }
@@ -46,14 +41,7 @@ export class TaskManagerContentComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result && result.event === 'ok') {
         this.apollo.mutate({
-          mutation: gql`
-          mutation ($board: BoardInputGraphType!) {
-            addBoard(board: $board){
-              id
-              title
-            }
-          }
-        `,
+          mutation: addBoard,
           variables: {
             board: {
               title: result.data.value
@@ -68,6 +56,7 @@ export class TaskManagerContentComponent implements OnInit {
             }
           }
         }).subscribe(res => {
+          this.boards.push(res.data.addBoard);
           this.route.navigate(['.', res.data.addBoard.id], {relativeTo: this.activatedRoute});
         });
       }

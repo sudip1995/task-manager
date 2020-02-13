@@ -2,10 +2,10 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import {FormControl} from '@angular/forms';
 import {Apollo} from 'apollo-angular';
-import gql from 'graphql-tag';
 import {ActivatedRoute} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
+import {boardById} from '../../graphql/task-manager.query';
 
 @Component({
   selector: 'app-board',
@@ -32,28 +32,7 @@ export class BoardComponent implements OnInit, OnDestroy {
   }
   private loadBoardDetail(boardId: any) {
     this.apollo.watchQuery<any>({
-      query: gql`
-        query ($boardId: String!) {
-          board(id: $boardId)
-          {
-            id
-            title
-            columns {
-              id
-              boardId
-              title
-              order
-              tickets {
-                id
-                title
-                columnId
-                description
-                order
-              }
-            }
-          }
-        }
-      `,
+      query: boardById,
       variables: {
         boardId
       }
