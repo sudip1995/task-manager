@@ -9,7 +9,18 @@
 .list {
   margin: 5px;
   height: 100%;
+}
 
+.card-input {
+  padding: 15px;
+  min-height: 60px;
+  max-height: 60px;
+  cursor: pointer;
+}
+
+.card-name {
+  width: auto;
+  padding-left: 10px;
 }
 
 .cdk-drag-placeholder {

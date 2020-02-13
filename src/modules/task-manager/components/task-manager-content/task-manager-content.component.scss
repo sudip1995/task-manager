@@ -12,7 +12,8 @@
   min-height: 120px;
   max-height: 120px;
   cursor: pointer;
-}
+  border-radius: 5px;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);}
 
 .board-tile:hover {
   opacity: 0.8;
@@ -21,13 +22,6 @@
 .add-board-tile {
   background: 0 0;
   color: #337aee;
-  margin: 10px;
-  padding: 20px;
-  min-width: 200px;
-  max-width: 200px;
-  min-height: 120px;
-  max-height: 120px;
-  cursor: pointer;
 }
 
 .add-board-tile:hover {
@@ -37,4 +31,5 @@
 .board-title {
   font-size: 20px;
   margin-left: 5px;
+  margin-top: -4px;
 }

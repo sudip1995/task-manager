@@ -12,5 +12,9 @@
        cdkDrag [cdkDragData]="task"
   [taskDetail]="task">
   </app-card>
+  <mat-form-field class="card-input" appearance="outline">
+    <i class="fa fa-plus"></i>
+    <input class="card-name" type="text" matInput [formControl]="cardName" placeholder="Add another card"/>
+  </mat-form-field>
   </div>
 </div>

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-list',
@@ -10,8 +11,11 @@ export class ListComponent implements OnInit {
 
   @Input() listDetail: any;
   @Input() listIds: string[];
+  cardName: FormControl;
 
-  constructor() { }
+  constructor() {
+    this.cardName = new FormControl();
+  }
 
   ngOnInit() {
   }

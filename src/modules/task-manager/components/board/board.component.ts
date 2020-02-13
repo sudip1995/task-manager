@@ -19,7 +19,9 @@ export class BoardComponent implements OnInit, OnDestroy {
   listName: FormControl;
   unSubscribe$ = new Subject();
   constructor(private apollo: Apollo,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute) {
+    this.listName = new FormControl();
+  }
 
   ngOnInit() {
     this.activatedRoute.params.pipe(takeUntil(this.unSubscribe$)).subscribe(param => {
@@ -27,7 +29,6 @@ export class BoardComponent implements OnInit, OnDestroy {
         this.loadBoardDetail(param.id);
       }
     });
-    this.listName = new FormControl();
   }
   private loadBoardDetail(boardId: any) {
     this.apollo.watchQuery<any>({
