@@ -1,11 +1,12 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
-import {FormControl} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 import {Apollo} from 'apollo-angular';
 import {ActivatedRoute} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {boardById} from '../../graphql/task-manager.query';
+import {addList} from '../../graphql/task-manager.mutation';
 
 @Component({
   selector: 'app-board',
@@ -18,9 +19,12 @@ export class BoardComponent implements OnInit, OnDestroy {
   listIds: string[];
   listName: FormControl;
   unSubscribe$ = new Subject();
+  listInputBoxOpen: boolean;
+
+  @ViewChild('listInput', null) listInput: ElementRef;
   constructor(private apollo: Apollo,
               private activatedRoute: ActivatedRoute) {
-    this.listName = new FormControl();
+    this.listName = new FormControl('', Validators.required);
   }
 
   ngOnInit() {
@@ -46,6 +50,43 @@ export class BoardComponent implements OnInit, OnDestroy {
   drop(event: CdkDragDrop<string, any>) {
     moveItemInArray(this.boardDetail.columns, event.previousIndex, event.currentIndex);
     this.listIds = this.boardDetail.columns.map(l => `${l.id}`);
+  }
+
+  addList() {
+    this.apollo.mutate({
+      mutation: addList,
+      variables: {
+        boardId: this.boardDetail.id,
+        column: {
+          title: this.listName.value
+        }
+      },
+      optimisticResponse: {
+        __typename: 'Mutation',
+        addColumn: {
+          __typename: 'Column',
+          id: '1',
+          title: this.listName.value
+        }
+      }
+    }).subscribe(res => {
+      this.boardDetail.columns.push(res.data.addColumn);
+      this.listIds.push(res.data.addColumn.id);
+    });
+    this.listName.setValue('');
+    this.closeListInput();
+  }
+
+  openListInput() {
+    this.listInputBoxOpen = true;
+    setTimeout(() => {
+      this.listInput.nativeElement.focus();
+      this.listInput.nativeElement.click();
+    }, 0);
+  }
+
+  closeListInput() {
+    this.listInputBoxOpen = false;
   }
 
   ngOnDestroy(): void {

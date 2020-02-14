@@ -7,8 +7,14 @@
        cdkDropListGroup
        cdkDrag [cdkDragData]="list">
   </app-list>
-  <mat-form-field class="list-input" appearance="outline">
+  <div *ngIf="!listInputBoxOpen" class="add-list-box" (click)="openListInput()">
     <i class="fa fa-plus"></i>
-    <input class="list-name" type="text" matInput [formControl]="listName" placeholder="Add another list"/>
-  </mat-form-field>
+    <span class="add-list-text">Add another list</span>
+  </div>
+  <div *ngIf="listInputBoxOpen" class="list-input" fxLayout="column" attachOutsideOnClick="true" (clickOutside)="closeListInput()">
+    <input #listInput matInput class="list-name" type="text" [formControl]="listName" placeholder="Enter list title..."/>
+    <button [disabled]="listName.invalid" mat-stroked-button class="ok-button add-list-button" (click)="addList()">
+      Add List
+    </button>
+  </div>
 </div>

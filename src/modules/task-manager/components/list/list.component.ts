@@ -60,7 +60,7 @@ export class ListComponent implements OnInit {
     }).subscribe(res => {
       this.listDetail.tickets.push(res.data.addTicket);
     });
-    this.closeCardInput();
+    this.cardName.setValue('');
   }
 
   closeCardInput() {

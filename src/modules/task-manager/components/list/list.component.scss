@@ -6,6 +6,7 @@
   border-radius: 5px;
   overflow: auto;
   cursor: pointer;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 }
 
 .list {
@@ -43,6 +44,10 @@
 .add-card-text {
   width: auto;
   padding-left: 10px;
+}
+
+.add-card-button {
+  margin: 0px 0px 15px 15px;
 }
 
 .cdk-drag-placeholder {
