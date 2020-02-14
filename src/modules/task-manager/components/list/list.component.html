@@ -17,8 +17,8 @@
   </div>
   <div *ngIf="cardInputBoxOpen" class="card-input" fxLayout="column" attachOutsideOnClick="true" (clickOutside)="closeCardInput()">
     <input #cardInput class="card-name" type="text" [formControl]="cardName" placeholder="Enter a title for this card..."/>
-    <button [disabled]="cardName.invalid" mat-stroked-button class="ok-button" (click)="addCard()">
-      Add Card
-    </button>
   </div>
+  <button *ngIf="cardInputBoxOpen" [disabled]="cardName.invalid" mat-stroked-button class="ok-button add-card-button" (click)="addCard()">
+    Add Card
+  </button>
 </div>
