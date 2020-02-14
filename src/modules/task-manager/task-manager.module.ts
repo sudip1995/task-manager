@@ -10,6 +10,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {ReactiveFormsModule} from '@angular/forms';
 import { AddBoardDialogComponent } from './components/dialog-components/add-board-dialog/add-board-dialog.component';
+import {ClickOutsideModule} from 'ng-click-outside';
 
 
 
@@ -28,7 +29,8 @@ import { AddBoardDialogComponent } from './components/dialog-components/add-boar
     ReactiveFormsModule,
     MatInputModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    ClickOutsideModule
   ],
   entryComponents: [
     AddBoardDialogComponent

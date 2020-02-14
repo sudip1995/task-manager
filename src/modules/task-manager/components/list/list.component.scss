@@ -2,23 +2,45 @@
   background-color: #ebecf0;
   min-width: 350px;
   max-width: 350px;
-  height: 100%;
+  max-height: 100%;
+  border-radius: 5px;
   overflow: auto;
-}
-
-.list {
-  margin: 5px;
-  height: 100%;
-}
-
-.card-input {
-  padding: 15px;
-  min-height: 60px;
-  max-height: 60px;
   cursor: pointer;
 }
 
+.list {
+  padding-bottom: 25px;
+}
+
+.add-card-box {
+  margin: 15px;
+  padding: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    background: #d6d6d6;
+  }
+}
+
+.card-input {
+  margin: 15px;
+  padding: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: white;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
 .card-name {
+  padding-bottom: 20px;
+  border: transparent;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  &:focus {
+    outline: none;
+  }
+}
+
+.add-card-text {
   width: auto;
   padding-left: 10px;
 }

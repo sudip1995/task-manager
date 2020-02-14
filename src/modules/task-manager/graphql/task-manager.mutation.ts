@@ -8,3 +8,21 @@ export const addBoard =  gql`
     }
   }
 `;
+
+export const addList =  gql`
+  mutation ($boardId: String!, $column: ColumnInputGraphType!) {
+    addColumn(boardId: $boardId, column: $column){
+      id
+      title
+    }
+  }
+`;
+
+export const addCard =  gql`
+  mutation ($columnId: String!, $ticket: TicketInputGraphType!) {
+  addTicket(columnId: $columnId, ticket: $ticket){
+    id
+    title
+  }
+}
+`;

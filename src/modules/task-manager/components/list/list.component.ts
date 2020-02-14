@@ -1,6 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import {FormControl} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
+import {addBoard, addCard} from '../../graphql/task-manager.mutation';
+import {Apollo} from 'apollo-angular';
 
 @Component({
   selector: 'app-list',
@@ -12,9 +14,12 @@ export class ListComponent implements OnInit {
   @Input() listDetail: any;
   @Input() listIds: string[];
   cardName: FormControl;
+  cardInputBoxOpen: boolean;
 
-  constructor() {
-    this.cardName = new FormControl();
+  @ViewChild('cardInput', null) cardInput: ElementRef;
+
+  constructor(private apollo: Apollo) {
+    this.cardName = new FormControl('', Validators.required);
   }
 
   ngOnInit() {
@@ -33,5 +38,40 @@ export class ListComponent implements OnInit {
 
   getConnectedList(): any[] {
     return this.listIds;
+  }
+
+  addCard() {
+    this.apollo.mutate({
+      mutation: addCard,
+      variables: {
+        columnId: this.listDetail.id,
+        ticket: {
+          title: this.cardName.value
+        }
+      },
+      optimisticResponse: {
+        __typename: 'Mutation',
+        addTicket: {
+          __typename: 'Ticket',
+          id: '1',
+          title: this.cardName.value
+        }
+      }
+    }).subscribe(res => {
+      this.listDetail.tickets.push(res.data.addTicket);
+    });
+    this.closeCardInput();
+  }
+
+  closeCardInput() {
+    this.cardInputBoxOpen = false;
+  }
+
+  openCardInput() {
+    this.cardInputBoxOpen = true;
+    setTimeout(() => {
+      this.cardInput.nativeElement.focus();
+      this.cardInput.nativeElement.click();
+    }, 0);
   }
 }

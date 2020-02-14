@@ -11,19 +11,5 @@
   cursor: pointer;
   border: none;
   background: transparent;
-}
-
-.mat-stroked-button {
-  min-width: 85px;
-}
-
-.mat-stroked-button[disabled] {
-  opacity: 0.5;
-  cursor: not-allowed;
-  color: white;
-}
-
-.ok-button {
-  background: #337aee;
-  color: white;
+  outline: none;
 }

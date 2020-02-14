@@ -6,3 +6,19 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 app-task-manager-content {
   height: 100%;
 }
+
+.mat-stroked-button {
+  min-width: 85px!important;
+  max-width: 100px!important;
+}
+
+.mat-stroked-button[disabled] {
+  opacity: 0.5!important;
+  cursor: not-allowed!important;
+  color: white!important;
+}
+
+.ok-button {
+  background: #337aee;
+  color: white;
+}
