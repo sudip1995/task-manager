@@ -1,0 +1,23 @@
+<div fxLayout="row" fxLayoutAlign="space-between center" class="modal-header">
+  <h2>{{cardDetails.title}}</h2>
+  <mat-dialog-actions>
+    <button class="material-icons" mat-dialog-close>close</button>
+  </mat-dialog-actions>
+</div>
+<div fxLayout="row">
+  <ul>
+    <li>
+      <div fxLayout="column">
+        Description
+        <mat-form-field>
+          <textarea matInput type="text" [(ngModel)]="cardDetails.description" [formControl]="description"
+                    placeholder="Add a more detailed description...">
+
+          </textarea>
+        </mat-form-field>
+      </div>
+    </li>
+  </ul>
+  <app-card-detail-menu></app-card-detail-menu>
+</div>
+

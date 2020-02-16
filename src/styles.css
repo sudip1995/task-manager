@@ -22,3 +22,10 @@ app-task-manager-content {
   background: #337aee;
   color: white;
 }
+
+.material-icons {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  outline: none;
+}

@@ -58,6 +58,9 @@ export class ListComponent implements OnInit {
         }
       }
     }).subscribe(res => {
+      if (this.listDetail.tickets == null) {
+        this.listDetail.tickets = [];
+      }
       this.listDetail.tickets.push(res.data.addTicket);
     });
     this.cardName.setValue('');

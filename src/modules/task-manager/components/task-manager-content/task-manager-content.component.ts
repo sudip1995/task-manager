@@ -35,7 +35,7 @@ export class TaskManagerContentComponent implements OnInit {
   addBoard() {
     const dialogRef = this.dialog.open(AddBoardDialogComponent, {
       minWidth: '350px',
-      maxWidth: '1000px'
+      maxWidth: '1000px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
