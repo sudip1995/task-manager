@@ -13,17 +13,27 @@ import { AddBoardDialogComponent } from './components/dialog-components/add-boar
 import {ClickOutsideModule} from 'ng-click-outside';
 import { CardDetailsDialogComponent } from './components/dialog-components/card-details-dialog/card-details-dialog.component';
 import { CardDetailMenuComponent } from './components/card-detail-menu/card-detail-menu.component';
+import {CardActionDialogComponent} from './components/dialog-components/card-action-dialog/card-action-dialog.component';
+import {CardActionDirective} from './components/directives/card-action.directive';
+import { MoveCardComponent } from './components/card-action-components/move-card/move-card.component';
+import { CopyCardComponent } from './components/card-action-components/copy-card/copy-card.component';
 
 
 
 @NgModule({
-  declarations: [TaskManagerContentComponent,
+  declarations: [
+    TaskManagerContentComponent,
     BoardComponent,
     CardComponent,
     ListComponent,
     AddBoardDialogComponent,
     CardDetailsDialogComponent,
-    CardDetailMenuComponent],
+    CardDetailMenuComponent,
+    CardActionDialogComponent,
+    CardActionDirective,
+    MoveCardComponent,
+    CopyCardComponent
+  ],
   exports: [
     TaskManagerContentComponent
   ],
@@ -42,7 +52,10 @@ import { CardDetailMenuComponent } from './components/card-detail-menu/card-deta
   ],
   entryComponents: [
     AddBoardDialogComponent,
-    CardDetailsDialogComponent
+    CardDetailsDialogComponent,
+    CardActionDialogComponent,
+    MoveCardComponent,
+    CopyCardComponent
   ]
 })
 export class TaskManagerModule { }
