@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export const addBoard =  gql`
-  mutation ($board: BoardInputGraphType!) {
-    addBoard(board: $board){
+  mutation ($title: String!) {
+    addBoard(title: $title){
       id
       title
     }
@@ -10,8 +10,8 @@ export const addBoard =  gql`
 `;
 
 export const addList =  gql`
-  mutation ($boardId: String!, $column: ColumnInputGraphType!) {
-    addColumn(boardId: $boardId, column: $column){
+  mutation ($boardId: String!, $title: String!) {
+    addColumn(boardId: $boardId, title: $title){
       id
       title
     }
@@ -19,8 +19,8 @@ export const addList =  gql`
 `;
 
 export const addCard =  gql`
-  mutation ($columnId: String!, $ticket: TicketInputGraphType!) {
-  addTicket(columnId: $columnId, ticket: $ticket){
+  mutation ($columnId: String!, $title: String!) {
+  addTicket(columnId: $columnId, title: $title){
     id
     title
   }

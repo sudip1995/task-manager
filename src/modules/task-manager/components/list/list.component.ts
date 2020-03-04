@@ -45,9 +45,7 @@ export class ListComponent implements OnInit {
       mutation: addCard,
       variables: {
         columnId: this.listDetail.id,
-        ticket: {
-          title: this.cardName.value
-        }
+        title: this.cardName.value
       },
       optimisticResponse: {
         __typename: 'Mutation',

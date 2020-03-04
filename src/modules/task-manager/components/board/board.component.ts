@@ -48,6 +48,10 @@ export class BoardComponent implements OnInit, OnDestroy {
   }
 
   drop(event: CdkDragDrop<string, any>) {
+    console.log(event);
+    if (event.previousIndex !== event.currentIndex) {
+
+    }
     moveItemInArray(this.boardDetail.columns, event.previousIndex, event.currentIndex);
     this.listIds = this.boardDetail.columns.map(l => `${l.id}`);
   }
@@ -57,9 +61,7 @@ export class BoardComponent implements OnInit, OnDestroy {
       mutation: addList,
       variables: {
         boardId: this.boardDetail.id,
-        column: {
-          title: this.listName.value
-        }
+        title: this.listName.value
       },
       optimisticResponse: {
         __typename: 'Mutation',

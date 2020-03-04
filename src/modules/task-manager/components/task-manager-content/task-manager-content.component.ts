@@ -43,9 +43,7 @@ export class TaskManagerContentComponent implements OnInit {
         this.apollo.mutate({
           mutation: addBoard,
           variables: {
-            board: {
-              title: result.data.value
-            }
+            title: result.data.value
           },
           optimisticResponse: {
             __typename: 'Mutation',

@@ -19,13 +19,10 @@ export const boardById = gql`
         id
         boardId
         title
-        order
         tickets {
           id
           title
           columnId
-          description
-          order
         }
       }
     }
