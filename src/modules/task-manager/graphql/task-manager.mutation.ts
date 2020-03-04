@@ -20,9 +20,19 @@ export const addList =  gql`
 
 export const addCard =  gql`
   mutation ($columnId: String!, $title: String!) {
-  addTicket(columnId: $columnId, title: $title){
-    id
-    title
+    addTicket(columnId: $columnId, title: $title){
+      id
+      title
+    }
   }
-}
 `;
+
+export const moveColumn =  gql`
+  mutation ($fromBoardId: String!, $toBoardId: String, $previousIndex: Int!, $currentIndex: Int!) {
+    moveColumn(fromBoardId: $fromBoardId, toBoardId: $toBoardId, previousIndex: $previousIndex, currentIndex: $currentIndex){
+      id
+    }
+  }
+`;
+
+

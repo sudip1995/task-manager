@@ -6,7 +6,7 @@ import {ActivatedRoute} from '@angular/router';
 import {takeUntil} from 'rxjs/operators';
 import {Subject} from 'rxjs';
 import {boardById} from '../../graphql/task-manager.query';
-import {addList} from '../../graphql/task-manager.mutation';
+import {addList, moveColumn} from '../../graphql/task-manager.mutation';
 
 @Component({
   selector: 'app-board',
@@ -50,7 +50,15 @@ export class BoardComponent implements OnInit, OnDestroy {
   drop(event: CdkDragDrop<string, any>) {
     console.log(event);
     if (event.previousIndex !== event.currentIndex) {
-
+      this.apollo.mutate({
+        mutation: moveColumn,
+        variables: {
+          fromBoardId: this.boardDetail.id,
+          toBoardId: null,
+          previousIndex: event.previousIndex,
+          currentIndex: event.currentIndex
+        }
+      }).subscribe();
     }
     moveItemInArray(this.boardDetail.columns, event.previousIndex, event.currentIndex);
     this.listIds = this.boardDetail.columns.map(l => `${l.id}`);
