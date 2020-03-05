@@ -35,4 +35,12 @@ export const moveColumn =  gql`
   }
 `;
 
+export const moveTicket =  gql`
+  mutation ($fromBoardId: String!, $toBoardId: String, $fromColumnId: String!, $toColumnId: String, $previousIndex: Int!, $currentIndex: Int!) {
+    moveTicket(fromBoardId: $fromBoardId, toBoardId: $toBoardId, fromColumnId: $fromColumnId, toColumnId: $toColumnId, previousIndex: $previousIndex, currentIndex: $currentIndex){
+      id
+    }
+  }
+`;
+
 
