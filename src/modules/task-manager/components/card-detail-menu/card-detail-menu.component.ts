@@ -4,6 +4,8 @@ import {MatDialog} from '@angular/material';
 import {CardActionDialogComponent} from '../dialog-components/card-action-dialog/card-action-dialog.component';
 import {MoveCardComponent} from '../card-action-components/move-card/move-card.component';
 import {CopyCardComponent} from '../card-action-components/copy-card/copy-card.component';
+import {AddChecklistComponent} from '../card-action-components/add-checklist/add-checklist.component';
+import {TaskManagerComponentRegistry} from '../../task-manager-component-registry';
 
 @Component({
   selector: 'app-card-detail-menu',
@@ -17,26 +19,14 @@ export class CardDetailMenuComponent implements OnInit {
   ngOnInit() {
   }
 
-  openMoveCardDialog() {
+  openCardDetailsDialog(componentName: string, header: string, actionButtonText: string) {
     const dialogRef = this.dialog.open(CardActionDialogComponent, {
       minWidth: '350px',
       maxWidth: '1000px',
       data: {
-        header: 'Move Card',
-        component: MoveCardComponent,
-        actionButtonText: 'Move'
-      }
-    });
-  }
-
-  openCopyCardDialog() {
-    const dialogRef = this.dialog.open(CardActionDialogComponent, {
-      minWidth: '350px',
-      maxWidth: '1000px',
-      data: {
-        header: 'Copy Card',
-        component: CopyCardComponent,
-        actionButtonText: 'Copy'
+        header,
+        component: TaskManagerComponentRegistry.components.get(componentName),
+        actionButtonText
       }
     });
   }

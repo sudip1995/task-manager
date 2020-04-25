@@ -3,7 +3,7 @@
     Add to card
     <div fxLayout="column" fxLayoutAlign="space-between">
       <button>Members</button>
-      <button>Checklist</button>
+      <button (click)="openCardDetailsDialog('AddChecklistComponent', 'Add Checklist', 'Add')">Checklist</button>
       <button>Due Date</button>
       <button>Attachment</button>
     </div>
@@ -11,8 +11,8 @@
   <li>
     Actions
     <div fxLayout="column">
-      <button (click)="openMoveCardDialog()">Move</button>
-      <button (click)="openCopyCardDialog()">Copy</button>
+      <button (click)="openCardDetailsDialog('MoveCardComponent', 'Move Card', 'Move')">Move</button>
+      <button (click)="openCardDetailsDialog('CopyCardComponent', 'Copy Card', 'Copy')">Copy</button>
       <button>Watch</button>
       <button>Archive</button>
       <button>Share</button>

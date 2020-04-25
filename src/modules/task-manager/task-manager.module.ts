@@ -17,6 +17,8 @@ import {CardActionDialogComponent} from './components/dialog-components/card-act
 import {CardActionDirective} from './components/directives/card-action.directive';
 import { MoveCardComponent } from './components/card-action-components/move-card/move-card.component';
 import { CopyCardComponent } from './components/card-action-components/copy-card/copy-card.component';
+import { AddChecklistComponent } from './components/card-action-components/add-checklist/add-checklist.component';
+import {TaskManagerComponentRegistry} from './task-manager-component-registry';
 
 
 
@@ -32,7 +34,8 @@ import { CopyCardComponent } from './components/card-action-components/copy-card
     CardActionDialogComponent,
     CardActionDirective,
     MoveCardComponent,
-    CopyCardComponent
+    CopyCardComponent,
+    AddChecklistComponent
   ],
   exports: [
     TaskManagerContentComponent
@@ -55,7 +58,13 @@ import { CopyCardComponent } from './components/card-action-components/copy-card
     CardDetailsDialogComponent,
     CardActionDialogComponent,
     MoveCardComponent,
-    CopyCardComponent
+    CopyCardComponent,
+    AddChecklistComponent
   ]
 })
-export class TaskManagerModule { }
+export class TaskManagerModule {
+  constructor() {
+    TaskManagerComponentRegistry.init();
+  }
+
+}
