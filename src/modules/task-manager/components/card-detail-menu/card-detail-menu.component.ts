@@ -1,10 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AddBoardDialogComponent} from '../dialog-components/add-board-dialog/add-board-dialog.component';
 import {MatDialog} from '@angular/material';
 import {CardActionDialogComponent} from '../dialog-components/card-action-dialog/card-action-dialog.component';
-import {MoveCardComponent} from '../card-action-components/move-card/move-card.component';
-import {CopyCardComponent} from '../card-action-components/copy-card/copy-card.component';
-import {AddChecklistComponent} from '../card-action-components/add-checklist/add-checklist.component';
 import {TaskManagerComponentRegistry} from '../../task-manager-component-registry';
 
 @Component({
@@ -13,6 +10,8 @@ import {TaskManagerComponentRegistry} from '../../task-manager-component-registr
   styleUrls: ['./card-detail-menu.component.scss']
 })
 export class CardDetailMenuComponent implements OnInit {
+
+  @Input() cardDetails: any;
 
   constructor(private dialog: MatDialog) { }
 
@@ -26,7 +25,8 @@ export class CardDetailMenuComponent implements OnInit {
       data: {
         header,
         component: TaskManagerComponentRegistry.components.get(componentName),
-        actionButtonText
+        actionButtonText,
+        cardDetails: this.cardDetails
       }
     });
   }

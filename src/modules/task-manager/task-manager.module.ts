@@ -4,7 +4,15 @@ import { TaskManagerContentComponent } from './components/task-manager-content/t
 import { BoardComponent } from './components/board/board.component';
 import { CardComponent } from './components/card/card.component';
 import { ListComponent } from './components/list/list.component';
-import {MatButtonModule, MatCardModule, MatDialogModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatProgressBarModule
+} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {ScrollingModule} from '@angular/cdk/scrolling';
@@ -19,6 +27,8 @@ import { MoveCardComponent } from './components/card-action-components/move-card
 import { CopyCardComponent } from './components/card-action-components/copy-card/copy-card.component';
 import { AddChecklistComponent } from './components/card-action-components/add-checklist/add-checklist.component';
 import {TaskManagerComponentRegistry} from './task-manager-component-registry';
+import { CardDetailsContentComponent } from './components/card-details-content/card-details-content.component';
+import { ChecklistDetailsComponent } from './components/card-details-components/checklist-details/checklist-details.component';
 
 
 
@@ -35,7 +45,9 @@ import {TaskManagerComponentRegistry} from './task-manager-component-registry';
     CardActionDirective,
     MoveCardComponent,
     CopyCardComponent,
-    AddChecklistComponent
+    AddChecklistComponent,
+    CardDetailsContentComponent,
+    ChecklistDetailsComponent
   ],
   exports: [
     TaskManagerContentComponent
@@ -51,7 +63,9 @@ import {TaskManagerComponentRegistry} from './task-manager-component-registry';
     MatInputModule,
     MatDialogModule,
     MatButtonModule,
-    ClickOutsideModule
+    ClickOutsideModule,
+    MatProgressBarModule,
+    MatCheckboxModule
   ],
   entryComponents: [
     AddBoardDialogComponent,

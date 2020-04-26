@@ -1,0 +1,19 @@
+<div class="card-details">
+  <ul>
+    <li>
+      <div fxLayout="column">
+        Description
+        <mat-form-field appearance="outline">
+            <textarea matInput type="text" [(ngModel)]="cardDetails.description" [formControl]="description"
+                      placeholder="Add a more detailed description...">
+            </textarea>
+        </mat-form-field>
+      </div>
+    </li>
+    <li>
+      <div *ngFor="let checklist of cardDetails.checkLists">
+        <app-checklist-details [checklist]="checklist"></app-checklist-details>
+      </div>
+    </li>
+  </ul>
+</div>

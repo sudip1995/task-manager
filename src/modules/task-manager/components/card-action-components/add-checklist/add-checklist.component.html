@@ -1,1 +1,10 @@
-<p>add-checklist works!</p>
+<div>
+  <form (keydown.enter)="$event.preventDefault()" [formGroup]="inputForm" fxLayout="column" fxFlex="1 0 0">
+    <div fxLayout="row" fxLayoutAlign="start start" fxFlex="0 0 auto">
+      <mat-form-field appearance="outline" fxFlex="1 0 100">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" required>
+      </mat-form-field>
+    </div>
+  </form>
+</div>

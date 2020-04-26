@@ -43,4 +43,22 @@ export const moveTicket =  gql`
   }
 `;
 
+export const addChecklist =  gql`
+  mutation ($ticketId: String!, $title: String!) {
+    addChecklist(ticketId: $ticketId, title: $title){
+      id
+      title
+    }
+  }
+`;
+
+export const addChecklistItem =  gql`
+  mutation ($checklistId: String!, $title: String!) {
+    addChecklistItem(checklistId: $checklistId, title: $title){
+      id
+      title
+    }
+  }
+`;
+
 

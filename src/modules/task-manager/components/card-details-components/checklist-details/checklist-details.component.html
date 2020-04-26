@@ -1,0 +1,22 @@
+
+<div>{{checklist.title}}</div>
+
+<mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+
+<div *ngFor="let checklistItem of checklist.checkListItems">
+  <mat-checkbox color="primary">{{checklistItem.title}}</mat-checkbox>
+</div>
+
+<div *ngIf="!itemInputBoxOpen">
+  <button mat-raised-button (click)="openItemInput()">Add Item</button>
+</div>
+
+<div *ngIf="itemInputBoxOpen" attachOutsideOnClick="true" (clickOutside)="closeItemInput()">
+  <mat-form-field class="cheklist-item-input" appearance="outline">
+    <input matInput #itemInput type="text" [formControl]="itemTitle" placeholder="Enter a title for this item..."/>
+  </mat-form-field>
+</div>
+
+<button *ngIf="itemInputBoxOpen" [disabled]="itemTitle.invalid" mat-raised-button (click)="addChecklistItem()">
+  Add
+</button>

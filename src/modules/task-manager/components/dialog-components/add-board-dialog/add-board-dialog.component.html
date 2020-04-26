@@ -11,10 +11,7 @@
     <div fxLayout="row" fxLayoutAlign="start start" fxFlex="0 0 auto">
       <mat-form-field appearance="outline" fxFlex="1 0 100">
         <mat-label>Board Name</mat-label>
-        <input matInput formControlName="value" required
-               particleAnalytics
-               analyticsCategory= "add-board"
-               analyticsAction= "board-name">
+        <input matInput formControlName="value" required>
         <mat-error *ngIf="inputFormError.value.required">
           Please type a board name.
         </mat-error>

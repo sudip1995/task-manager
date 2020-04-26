@@ -21,7 +21,7 @@ export class CardComponent implements OnInit {
     const dialogRef = this.dialog.open(CardDetailsDialogComponent, {
       minWidth: '300px',
       minHeight: '300px',
-      data: this.taskDetail
+      data: {cardId: this.taskDetail.id}
     });
 
     dialogRef.afterClosed().subscribe();

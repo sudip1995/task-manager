@@ -1,5 +1,5 @@
 import {Component, ComponentFactoryResolver, Inject, OnInit, ViewChild} from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {CardActionDirective} from '../../directives/card-action.directive';
 
 @Component({
@@ -9,8 +9,12 @@ import {CardActionDirective} from '../../directives/card-action.directive';
 })
 export class CardActionDialogComponent implements OnInit {
   @ViewChild(CardActionDirective, {static: true}) cardActionHost: CardActionDirective;
+
+  protected componentRef: any;
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-              private componentFactoryResolver: ComponentFactoryResolver) { }
+              private componentFactoryResolver: ComponentFactoryResolver,
+              public dialogRef: MatDialogRef<CardActionDialogComponent>) { }
 
   ngOnInit() {
     this.loadComponent();
@@ -20,6 +24,15 @@ export class CardActionDialogComponent implements OnInit {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.data.component);
     const viewContainerRef = this.cardActionHost.viewContainerRef;
     viewContainerRef.clear();
-    const componentRef = viewContainerRef.createComponent(componentFactory);
+    this.componentRef = viewContainerRef.createComponent(componentFactory);
+    this.componentRef.instance.cardDetails = this.data.cardDetails;
+  }
+
+  onClick() {
+    if (this.componentRef.instance.onClick) {
+      if ( this.componentRef.instance.onClick()) {
+        this.dialogRef.close();
+      }
+    }
   }
 }

@@ -2,20 +2,23 @@
   <li>
     Add to card
     <div fxLayout="column" fxLayoutAlign="space-between">
-      <button>Members</button>
-      <button (click)="openCardDetailsDialog('AddChecklistComponent', 'Add Checklist', 'Add')">Checklist</button>
-      <button>Due Date</button>
-      <button>Attachment</button>
+      <button mat-raised-button class="card-action-button">Members</button>
+      <button mat-raised-button class="card-action-button"
+              (click)="openCardDetailsDialog('AddChecklistComponent', 'Add Checklist', 'Add')">Checklist</button>
+      <button mat-raised-button class="card-action-button">Due Date</button>
+      <button mat-raised-button class="card-action-button">Attachment</button>
     </div>
   </li>
   <li>
     Actions
     <div fxLayout="column">
-      <button (click)="openCardDetailsDialog('MoveCardComponent', 'Move Card', 'Move')">Move</button>
-      <button (click)="openCardDetailsDialog('CopyCardComponent', 'Copy Card', 'Copy')">Copy</button>
-      <button>Watch</button>
-      <button>Archive</button>
-      <button>Share</button>
+      <button mat-raised-button class="card-action-button"
+              (click)="openCardDetailsDialog('MoveCardComponent', 'Move Card', 'Move')">Move</button>
+      <button mat-raised-button class="card-action-button"
+              (click)="openCardDetailsDialog('CopyCardComponent', 'Copy Card', 'Copy')">Copy</button>
+      <button mat-raised-button class="card-action-button">Watch</button>
+      <button mat-raised-button class="card-action-button">Archive</button>
+      <button mat-raised-button class="card-action-button">Share</button>
     </div>
   </li>
 </ul>

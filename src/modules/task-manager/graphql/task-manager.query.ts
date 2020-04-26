@@ -29,3 +29,21 @@ export const boardById = gql`
   }
 `;
 
+export const cardDetailsById = gql`
+  query ($ticketId: String!) {
+    ticketDetails(id: $ticketId) {
+      id
+      title
+      checkLists {
+        id
+        title
+        checkListItems {
+          id
+          title
+          isChecked
+        }
+      }
+    }
+  }
+`;
+

@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material';
-import {FormControl} from '@angular/forms';
+import {boardById, cardDetailsById} from '../../../graphql/task-manager.query';
+import {Apollo} from 'apollo-angular';
 
 @Component({
   selector: 'app-card-details-dialog',
@@ -8,14 +9,27 @@ import {FormControl} from '@angular/forms';
   styleUrls: ['./card-details-dialog.component.scss']
 })
 export class CardDetailsDialogComponent implements OnInit {
-  description: FormControl;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public cardDetails: any) {
-    this.description = new FormControl();
+  cardDetails: any;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+              private apollo: Apollo) {
   }
 
   ngOnInit() {
-    console.log(this.cardDetails);
+    this.loadCardDetail(this.data.cardId);
+  }
+
+  private loadCardDetail(ticketId: any) {
+    this.apollo.watchQuery<any>({
+      query: cardDetailsById,
+      variables: {
+        ticketId
+      }
+    }).valueChanges.subscribe(res => {
+        this.cardDetails = res.data.ticketDetails;
+      }
+    );
   }
 
 }
