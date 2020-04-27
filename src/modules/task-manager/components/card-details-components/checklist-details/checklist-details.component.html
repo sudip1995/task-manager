@@ -1,10 +1,9 @@
-
 <div>{{checklist.title}}</div>
 
-<mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+<span>{{percentage}}%</span><mat-progress-bar mode="determinate" [value]="percentage"></mat-progress-bar>
 
 <div *ngFor="let checklistItem of checklist.checkListItems">
-  <mat-checkbox color="primary">{{checklistItem.title}}</mat-checkbox>
+  <mat-checkbox color="primary" [checked]="checklistItem.isChecked" (click)="toggleCheckItem(checklistItem)">{{checklistItem.title}}</mat-checkbox>
 </div>
 
 <div *ngIf="!itemInputBoxOpen">
@@ -20,3 +19,4 @@
 <button *ngIf="itemInputBoxOpen" [disabled]="itemTitle.invalid" mat-raised-button (click)="addChecklistItem()">
   Add
 </button>
+

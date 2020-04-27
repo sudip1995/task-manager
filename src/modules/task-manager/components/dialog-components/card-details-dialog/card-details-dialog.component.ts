@@ -21,12 +21,12 @@ export class CardDetailsDialogComponent implements OnInit {
   }
 
   private loadCardDetail(ticketId: any) {
-    this.apollo.watchQuery<any>({
+    this.apollo.query<any>({
       query: cardDetailsById,
       variables: {
         ticketId
       }
-    }).valueChanges.subscribe(res => {
+    }).subscribe(res => {
         this.cardDetails = res.data.ticketDetails;
       }
     );

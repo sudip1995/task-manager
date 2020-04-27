@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {AddBoardDialogComponent} from '../dialog-components/add-board-dialog/add-board-dialog.component';
 import {MatDialog} from '@angular/material';
 import {CardDetailsDialogComponent} from '../dialog-components/card-details-dialog/card-details-dialog.component';

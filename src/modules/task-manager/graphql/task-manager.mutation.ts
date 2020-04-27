@@ -48,6 +48,11 @@ export const addChecklist =  gql`
     addChecklist(ticketId: $ticketId, title: $title){
       id
       title
+      checkListItems {
+        id
+        title
+        isChecked
+      }
     }
   }
 `;
@@ -57,6 +62,26 @@ export const addChecklistItem =  gql`
     addChecklistItem(checklistId: $checklistId, title: $title){
       id
       title
+      isChecked
+    }
+  }
+`;
+
+export const updateChecklist =  gql`
+  mutation ($id: String!, $checklist: CheckList!) {
+    updateChecklist(id: $id, checklist: $checklist) {
+      id
+      title
+    }
+  }
+`;
+
+export const updateChecklistItem =  gql`
+  mutation ($id: String!, $checklistItem: CheckListItemInputGraphType!) {
+    updateChecklistItem(id: $id, checklistItem: $checklistItem) {
+      id
+      title
+      isChecked
     }
   }
 `;
