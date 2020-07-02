@@ -29,6 +29,7 @@ import { AddChecklistComponent } from './components/card-action-components/add-c
 import {TaskManagerComponentRegistry} from './task-manager-component-registry';
 import { CardDetailsContentComponent } from './components/card-details-content/card-details-content.component';
 import { ChecklistDetailsComponent } from './components/card-details-components/checklist-details/checklist-details.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 
@@ -47,7 +48,8 @@ import { ChecklistDetailsComponent } from './components/card-details-components/
     CopyCardComponent,
     AddChecklistComponent,
     CardDetailsContentComponent,
-    ChecklistDetailsComponent
+    ChecklistDetailsComponent,
+    HomeComponent
   ],
   exports: [
     TaskManagerContentComponent

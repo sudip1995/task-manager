@@ -1,0 +1,19 @@
+<div *ngIf="!isAuthenticated" fxLayout="column">
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div>
+      Task Manager
+    </div>
+    <div>
+      <button (click)="login()">login</button>
+      <button (click)="logout()">Logout</button>
+      <button>Register</button>
+    </div>
+  </div>
+  <div>
+    Here is Task Manager Home!
+  </div>
+  <div>
+    Footer
+  </div>
+</div>
+<app-task-manager-content *ngIf="isAuthenticated"></app-task-manager-content>
