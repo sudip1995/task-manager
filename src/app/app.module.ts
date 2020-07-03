@@ -8,10 +8,10 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {RouterModule} from '@angular/router';
 import {appRoutes} from './app.routes';
 import {HttpClientModule} from '@angular/common/http';
-import {ApolloModule, Apollo} from 'apollo-angular';
+import {ApolloModule} from 'apollo-angular';
 import {HttpLink, HttpLinkModule} from 'apollo-angular-link-http';
-import {InMemoryCache} from 'apollo-cache-inmemory';
 import {AuthModule, ConfigResult, OidcConfigService, OidcSecurityService, OpenIdConfiguration} from 'angular-auth-oidc-client';
+import { GraphQLModule } from './graphql.module';
 
 const oidc_configuration = 'assets/auth.clientConfiguration.json';
 
@@ -32,7 +32,8 @@ export function loadConfig(oidcConfigService: OidcConfigService) {
     ApolloModule,
     HttpLinkModule,
     RouterModule.forRoot(appRoutes),
-    AuthModule.forRoot()
+    AuthModule.forRoot(),
+    GraphQLModule
   ],
   providers: [
     OidcConfigService,
@@ -41,13 +42,12 @@ export function loadConfig(oidcConfigService: OidcConfigService) {
       useFactory: loadConfig,
       deps: [OidcConfigService],
       multi: true,
-    },
+    }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(apollo: Apollo,
-              httpLink: HttpLink,
+  constructor(httpLink: HttpLink,
               private oidcSecurityService: OidcSecurityService,
               private oidcConfigService: OidcConfigService) {
 
@@ -67,12 +67,6 @@ export class AppModule {
       };
 
       this.oidcSecurityService.setupModule(config, configResult.authWellknownEndpoints);
-    });
-
-
-    apollo.create({
-      link: httpLink.create({uri: 'https://localhost:5001/graphql/'}),
-      cache: new InMemoryCache()
     });
   }
 }
