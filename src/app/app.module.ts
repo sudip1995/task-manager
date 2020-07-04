@@ -57,12 +57,14 @@ export class AppModule {
       const config: OpenIdConfiguration = {
         stsServer: configResult.customConfig.stsServer,
         redirect_url: 'http://localhost:4200',
+        post_logout_redirect_uri: 'http://localhost:4200',
         client_id: 'taskmanagersdp',
-        scope: 'openid profile email',
+        scope: 'openid profile email offline_access',
         response_type: 'code',
-        // silent_renew: true,
+        silent_renew: true,
         // silent_renew_url: 'http://localhost:4200/silent-renew.html',
         log_console_debug_active: true,
+        use_refresh_token: true
         // all other properties you want to set
       };
 

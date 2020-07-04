@@ -5,7 +5,6 @@
     </div>
     <div>
       <button (click)="login()">login</button>
-      <button (click)="logout()">Logout</button>
       <button>Register</button>
     </div>
   </div>
@@ -17,3 +16,5 @@
   </div>
 </div>
 <app-task-manager-content *ngIf="isAuthenticated"></app-task-manager-content>
+<button *ngIf="isAuthenticated" (click)="logout()">Logout</button>
+
