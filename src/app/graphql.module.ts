@@ -5,8 +5,9 @@ import {InMemoryCache} from 'apollo-cache-inmemory';
 import {OidcSecurityService} from 'angular-auth-oidc-client';
 import {setContext} from 'apollo-link-context';
 import {ApolloLink} from 'apollo-link';
+import {environment} from '../environments/environment';
 
-const uri = 'https://localhost:5001/graphql/';
+const uri = `${environment.task_manager_api}/graphql`;
 export function provideApollo(httpLink: HttpLink, oidcSecurityService: OidcSecurityService) {
   const basic = setContext((operation, context) => ({
     headers: {

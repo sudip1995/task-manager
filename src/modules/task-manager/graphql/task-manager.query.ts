@@ -43,6 +43,11 @@ export const cardDetailsById = gql`
           isChecked
         }
       }
+      attachments {
+        id
+        fileName
+        fileSize
+      }
     }
   }
 `;

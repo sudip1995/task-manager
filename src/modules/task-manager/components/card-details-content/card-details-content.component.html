@@ -10,8 +10,8 @@
         </mat-form-field>
       </div>
     </li>
-    <li>
-      <div *ngFor="let checklist of cardDetails.checkLists">
+    <li *ngIf="cardDetails?.checkLists?.length > 0">
+      <div *ngFor="let checklist of cardDetails?.checkLists">
         <app-checklist-details [checklist]="checklist"></app-checklist-details>
       </div>
     </li>

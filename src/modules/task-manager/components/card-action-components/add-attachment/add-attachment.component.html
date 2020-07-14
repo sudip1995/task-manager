@@ -1,0 +1,53 @@
+<div class="file-uploader" appDnd (fileDropped)="onFileDropped($event)">
+
+  <div class="uploader-content">
+    <input hidden type="file"
+           (change)="onFileSelect($event)" multiple #fileDropRef/>
+    <span class="material-icons" style="font-size: 48px">
+      cloud_upload
+    </span>
+    <label>
+      Drag and drop files here
+    </label>
+  </div>
+
+  <label>
+    or
+  </label>
+
+  <button mat-stroked-button
+          class="mat-raised-button browse-btn"
+          (click)="fileDropRef.click()"
+          aria-label="add file">
+        <span class="mat-button-wrapper">
+          Browse for file
+        </span>
+  </button>
+
+  <mat-error style="margin-bottom: 20px">{{fileSizeError}}</mat-error>
+</div>
+
+<div class="files-list">
+  <div class="single-file" *ngFor="let file of files; let i = index">
+    <div class="info">
+      <span class="material-icons" style="font-size: 48px">
+        text_snippet
+      </span>
+      <div fxLayout="column" fxLayoutAlign="center">
+        <h4 class="name">
+          {{ file?.name }}
+        </h4>
+        <p class="size">
+          {{ formatBytes(file?.size) }}
+        </p>
+        <mat-progress-bar *ngIf="file.progress !== 100" [value]="file.progress"></mat-progress-bar>
+      </div>
+    </div>
+    <div class="delete" *ngIf="!file.inProgress" (click)="deleteFile(i)">
+      <span class="material-icons">delete</span>
+    </div>
+  </div>
+</div>
+
+
+

@@ -30,6 +30,8 @@ import {TaskManagerComponentRegistry} from './task-manager-component-registry';
 import { CardDetailsContentComponent } from './components/card-details-content/card-details-content.component';
 import { ChecklistDetailsComponent } from './components/card-details-components/checklist-details/checklist-details.component';
 import { HomeComponent } from './components/home/home.component';
+import { AddAttachmentComponent } from './components/card-action-components/add-attachment/add-attachment.component';
+import {DndDirective} from './directives/dnd.directive';
 
 
 
@@ -49,7 +51,9 @@ import { HomeComponent } from './components/home/home.component';
     AddChecklistComponent,
     CardDetailsContentComponent,
     ChecklistDetailsComponent,
-    HomeComponent
+    HomeComponent,
+    AddAttachmentComponent,
+    DndDirective
   ],
   exports: [
     TaskManagerContentComponent
@@ -75,7 +79,8 @@ import { HomeComponent } from './components/home/home.component';
     CardActionDialogComponent,
     MoveCardComponent,
     CopyCardComponent,
-    AddChecklistComponent
+    AddChecklistComponent,
+    AddAttachmentComponent
   ]
 })
 export class TaskManagerModule {

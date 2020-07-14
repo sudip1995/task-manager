@@ -18,7 +18,7 @@ export class CardDetailMenuComponent implements OnInit {
   ngOnInit() {
   }
 
-  openCardDetailsDialog(componentName: string, header: string, actionButtonText: string) {
+  openCardDetailsDialog(componentName: string, header: string, actionButtonText?: string) {
     const dialogRef = this.dialog.open(CardActionDialogComponent, {
       minWidth: '350px',
       maxWidth: '1000px',

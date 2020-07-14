@@ -5,4 +5,4 @@
   </mat-dialog-actions>
 </div>
 <ng-template appCardAction></ng-template>
-<button mat-raised-button (click)="onClick()">{{data.actionButtonText}}</button>
+<button *ngIf="data.actionButtonText" mat-raised-button (click)="onClick()">{{data.actionButtonText}}</button>
