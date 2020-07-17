@@ -14,4 +14,8 @@ export class TaskManagerConfig {
   static downloadAttachmentApi(id: string) {
     return `${TaskManagerConfig.rootApi}/api/attachment/download?id=${id}`;
   }
+
+  static deleteAttachmentApi(id: string) {
+    return `${TaskManagerConfig.rootApi}/api/attachment/delete?id=${id}`;
+  }
 }

@@ -19,4 +19,8 @@ export class TaskManagerService {
   downloadFile(id: string) {
     return this.httpClient.get(TaskManagerConfig.downloadAttachmentApi(id), {responseType: 'blob'});
   }
+
+  deleteFile(id: string) {
+    return this.httpClient.delete(TaskManagerConfig.deleteAttachmentApi(id));
+  }
 }

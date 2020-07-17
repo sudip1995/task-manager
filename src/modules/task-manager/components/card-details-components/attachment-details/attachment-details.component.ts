@@ -14,8 +14,11 @@ export class AttachmentDetailsComponent implements OnInit {
     console.log(this.files);
   }
 
-  deleteFile(index: number) {
-
+  deleteFile(file: any) {
+    this.taskManagerService.deleteFile(file.id).subscribe(res => {
+      console.log(res);
+      this.files = this.files.filter(o => o.id !== file.id);
+    });
   }
 
   download(file: any) {
