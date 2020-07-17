@@ -32,10 +32,6 @@ export class AddAttachmentComponent implements OnInit, CardActionInterface {
     this.prepareFilesList($event.target.files);
   }
 
-  deleteFile(index: number) {
-    this.files.splice(index, 1);
-  }
-
   prepareFilesList(files: any[]) {
     this.fileSizeError = '';
     for (const file of files) {
@@ -71,7 +67,7 @@ export class AddAttachmentComponent implements OnInit, CardActionInterface {
   }
 
   onClick(): boolean {
-    return false;
+    return true;
   }
 
   private uploadFile(file: any) {

@@ -15,4 +15,8 @@ export class TaskManagerService {
       observe: 'events'
     });
   }
+
+  downloadFile(id: string) {
+    return this.httpClient.get(TaskManagerConfig.downloadAttachmentApi(id), {responseType: 'blob'});
+  }
 }

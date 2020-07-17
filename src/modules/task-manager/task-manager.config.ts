@@ -10,4 +10,8 @@ export class TaskManagerConfig {
   static uploadAttachmentApi(ticketId: string): string {
     return `${TaskManagerConfig.rootApi}/api/attachment/upload?ticketId=${ticketId}`;
   }
+
+  static downloadAttachmentApi(id: string) {
+    return `${TaskManagerConfig.rootApi}/api/attachment/download?id=${id}`;
+  }
 }

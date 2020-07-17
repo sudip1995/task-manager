@@ -1,0 +1,25 @@
+<div class="files-list">
+  <div class="single-file" *ngFor="let file of files; let i = index">
+    <div class="info">
+      <span class="material-icons" style="font-size: 48px">
+        text_snippet
+      </span>
+      <div fxLayout="column" fxLayoutAlign="center">
+        <h4 class="name">
+          {{ file?.fileName }}
+        </h4>
+        <p class="size">
+          {{ file?.fileSize }}
+        </p>
+      </div>
+    </div>
+    <div class="action-button" (click)="download(file)">
+      <span class="material-icons">
+        cloud_download
+      </span>
+    </div>
+    <div class="action-button" (click)="deleteFile(i)">
+      <span class="material-icons">delete</span>
+    </div>
+  </div>
+</div>

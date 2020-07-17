@@ -32,6 +32,7 @@ import { ChecklistDetailsComponent } from './components/card-details-components/
 import { HomeComponent } from './components/home/home.component';
 import { AddAttachmentComponent } from './components/card-action-components/add-attachment/add-attachment.component';
 import {DndDirective} from './directives/dnd.directive';
+import { AttachmentDetailsComponent } from './components/card-details-components/attachment-details/attachment-details.component';
 
 
 
@@ -53,7 +54,8 @@ import {DndDirective} from './directives/dnd.directive';
     ChecklistDetailsComponent,
     HomeComponent,
     AddAttachmentComponent,
-    DndDirective
+    DndDirective,
+    AttachmentDetailsComponent
   ],
   exports: [
     TaskManagerContentComponent
